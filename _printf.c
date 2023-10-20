@@ -157,6 +157,9 @@ int _printf(const char *format, ...)
 {
 int times;
 int int_index;
+int sp_space = 0;
+int sp_hash = 0;
+int sp_space = 0;
 unsigned int oct_index;
 unsigned int dec_num;
 unsigned int lower_hex;
@@ -185,6 +188,22 @@ if (format[0] == '\0')
 {
 times += print_char('%');
 continue;
+}
+
+for (; format[0] == '+' || format[0] == '#' || format[0] == ' '; format++)
+{
+	if (format[0] == '+')
+	{
+		sp_plus = 1;
+	}
+	else if (format[0] == '#')
+	{
+		sp_hash = 1;
+	}
+	else if (format[0] == ' ')
+	{
+		sp_space = 1;
+	}
 }
 
 switch (*format)
