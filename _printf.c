@@ -178,14 +178,14 @@ va_start(arg_p, format);
 /*This where my argument list begins*/
 while (*format)
 {
-	if (format[0] == '%')
-	{
-	format++;
-	if (format[0] == '\0')
-	{
-		times += print_char('%');
-	continue;
-	}
+if (format[0] == '%')
+{
+format++;
+if (format[0] == '\0')
+{
+times += print_char('%');
+continue;
+}
 
 switch (*format)
 {
@@ -204,6 +204,9 @@ oct_index = va_arg(arg_p, unsigned int);
 times += print_oct(oct_index);
 break;
 case 'i':
+int_index = va_arg(arg_p, int);
+times += print_int(int_index);
+break;
 case 'd':
 int_index = va_arg(arg_p, int);
 times += print_int(int_index);
